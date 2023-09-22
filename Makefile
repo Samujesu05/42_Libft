@@ -20,7 +20,6 @@ CLEAN = rm -Rf
 all: $(NAME)
 
 $(NAME): %.o
-
 	@ar rcs $(NAME) $(OBJECTS)
 
 %.o:
