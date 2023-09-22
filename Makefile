@@ -14,7 +14,7 @@ NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 CC = cc
 SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c
-OBJECTS := $(SRC: %.c=%.o)
+OBJECTS = $(SRC: %.c=%.o)
 CLEAN = rm -Rf
 
 all: $(NAME)
@@ -27,10 +27,10 @@ $(NAME): %.o
 	@$(CC) $(CFLAGS) -c $(SRC)
 
 clean:
-	@$(CLEAN) $(OBJECTS)
+	@$(CLEAN) %.o
 
 fclean:
-	@$(CLEAN) $(OBJECTS)
+	@$(CLEAN) %.o
 	@$(CLEAN) $(NAME)
 
 re: fclean all
