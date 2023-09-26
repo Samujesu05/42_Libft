@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sborrego <sborrego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:51:32 by sborrego          #+#    #+#             */
-/*   Updated: 2023/09/26 20:03:52 by sborrego         ###   ########.fr       */
+/*   Created: 2023/09/26 20:04:14 by sborrego          #+#    #+#             */
+/*   Updated: 2023/09/26 20:18:30 by sborrego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stddef.h>
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+{
+	unsigned int	i;
 
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isprint(int c);
-size_t	ft_strlen(const char *s);
-void	*ft_memset(void *b, int c, size_t len);
-void	ft_bzero(void *b, size_t n);
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
-
-#endif
+	i = 0;
+	while (src != '\0' && i < n)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+}
