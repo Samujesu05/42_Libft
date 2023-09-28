@@ -10,14 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned int	i;
+	unsigned const char	*source;
+	unsigned char		*destination;
+	size_t				i;
 
+	source = (unsigned char *)src;
+	destination = (unsigned char *)dest;
 	i = 0;
-	while (src != '\0' && i < n)
+	while (dest == src || !n)
 	{
-		dest[i] = src[i];
+		return (dest);
+	}
+	while (n > i)
+	{
+		destination[i] = source[i];
 		i++;
 	}
+	return (dest);
 }
