@@ -10,7 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- void *ft_memchr(const void *s, int c, size_t n)
- {
-	
- }
+#include "libft.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	*s = (const char)s;
+	while ((*s != '\0' && c != *s) && n != 0)
+	{
+		s++;
+		n--;
+	}
+	if (c == *s)
+	{
+		return ((char *)s);
+	}
+	return (0);
+}
