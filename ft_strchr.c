@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sborrego <sborrego@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: sborrego <sborrego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:44:40 by sborrego          #+#    #+#             */
-/*   Updated: 2023/09/30 19:44:40 by sborrego         ###   ########.fr       */
+/*   Updated: 2023/10/12 04:00:56 by sborrego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char	*ft_strchr(const char *s, int c)
 {
+	c = (char)c;
 	while (*s != '\0' && c != *s)
 	{
 		s++;
@@ -20,5 +23,5 @@ char	*ft_strchr(const char *s, int c)
 	{
 		return ((char *)s);
 	}
-	return (0);
+	return (NULL);
 }

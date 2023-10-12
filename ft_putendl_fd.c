@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sborrego <sborrego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 10:34:10 by sborrego          #+#    #+#             */
-/*   Updated: 2023/10/12 04:05:41 by sborrego         ###   ########.fr       */
+/*   Created: 2023/10/12 04:29:24 by sborrego          #+#    #+#             */
+/*   Updated: 2023/10/12 04:46:27 by sborrego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_putendl_fd(char *s, int fd)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	littlelen;
+	int	i;
 
 	i = 0;
-	j = 0;
-	littlelen = ft_strlen(little);
-	if (little[j] == '\0')
-		return ((char *)big);
-	if (len < 0)
-		return (NULL);
-	while (big[i] != '\0' && len > i)
+	while (s[i] != '\0')
 	{
-		j = 0;
-		while (big[i + j] == little[j] && len > (i + j))
-		{
-			j++;
-			if (little[j] == '\0')
-			{
-				return ((char *)big + i);
-			}
-		}
+		write(fd, &s[i], 1);
 		i++;
 	}
-	return (NULL);
+	write(fd, "\n", 1);
 }
