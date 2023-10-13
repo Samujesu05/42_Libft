@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *nptr)
 {
 	int	num;
 	int	negcheck;
@@ -20,20 +20,20 @@ int	ft_atoi(char *str)
 	num = 0;
 	i = 0;
 	negcheck = 1;
-	while (str[i] == '\f' || str[i] == '\n' || str[i] == '\r'
-		|| str[i] == '\t' || str[i] == '\v' || str[i] == ' ')
+	while (nptr[i] == '\f' || nptr[i] == '\n' || nptr[i] == '\r'
+		|| nptr[i] == '\t' || nptr[i] == '\v' || nptr[i] == ' ')
 		i++;
-	while (str[i] == '+' || str[i] == '-')
+	while (nptr[i] == '+' || nptr[i] == '-')
 	{
-		if (str[i] == '-')
+		if (nptr[i] == '-')
 		{
 			negcheck *= -1;
 		}
 		i++;
 	}
-	while (str[i] <= '9' && str[i] >= '0')
+	while (nptr[i] <= '9' && nptr[i] >= '0')
 	{
-		num = (num * 10) + (str[i] - '0');
+		num = (num * 10) + (nptr[i] - '0');
 		i++;
 	}
 	return (num * negcheck);
