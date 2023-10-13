@@ -16,15 +16,11 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	unsigned int	i;
 	unsigned int	j;
-	unsigned int	littlelen;
 
 	i = 0;
 	j = 0;
-	littlelen = ft_strlen(little);
 	if (little[j] == '\0')
 		return ((char *)big);
-	if (len < 0)
-		return (NULL);
 	while (big[i] != '\0' && len > i)
 	{
 		j = 0;
