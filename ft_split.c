@@ -15,28 +15,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include "libft.h"
 
-static int	ft_word_len(char *s, char c, int *i)
+static char	*ft_word_len(char *s, char c)
 {
-	char	*j;
-	int		aux;
-
-	aux = 0;
-	j = strchr(s, c);
-	while (s[*i])
-	{
-		if (s[*i] != *j)
-			i++;
-		else
-		{
-			++i;
-			aux = *i + 1 - aux;
-			return (aux);
-		}
-		if (s[*i] == c)
-			aux++;
-	}
-	return (aux);
+	while (*s != '\0' && *s != c)
+		s++;
+	return (s);
 }
 
 static int	ft_count_words(char *s, char c)
@@ -60,43 +45,59 @@ static int	ft_count_words(char *s, char c)
 	return (j);
 }
 
+static char	**ft_freemem(char **result)
+{
+	int		i;
+
+	i = 0;
+	while (result[i] != NULL)
+	{
+		if (result[i] != NULL)
+		{
+			free(result[i]);
+			i++;
+		}
+	}
+	free(result);
+	return (0);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	int		n;
-	int		t;
 	int		j;
-	int		*i;
-	char	*s_aux;
+	int		i;
 
-	s_aux = (char *)s;
+	j = ft_count_words((char *)s, c) + 1;
+	result = ft_calloc(sizeof(char *), j);
 	i = 0;
-	n = ft_count_words(s_aux, c) + 1;
-	t = n;
-	result = malloc(sizeof(char *) * n);
 	if (result == NULL)
 		return (NULL);
-	while (t != 0)
+	while (*((char *)s) != '\0')
 	{
-		j = ft_word_len(s_aux, c, i);
-		result = malloc(j + 1 * sizeof(char) + 1);
-		if (result == NULL)
-			return (NULL);
-		while (*s_aux == c)
-			s_aux++;
-		memcpy(result, s_aux, j);
-		s_aux = s_aux + j;
-		*i = j + 1;
-		t--;
+		if (*((char *)s) != c)
+		{
+			j = ft_strlen((char *)s) + 1 - ft_strlen(ft_word_len((char *)s, c));
+			result[i] = ft_calloc(j, sizeof(char));
+			if (result[i] == NULL)
+				return (ft_freemem(result));
+			ft_strlcpy(result[i], (char *)s, j);
+			i++;
+			s = (char *)s + j - 2;
+		}
+		(char *)s++;
 	}
 	return (result);
 }
 
-/* int main()
+/*int main()
 {
-  char s1[] = "Hola Hola Hola      H Hola";
+  char s1[] = "Hola       sonic      mario buenas";
   char c1 = ' ';
-  ft_split(s1, c1);
+  char **result = ft_split(s1, c1);
+  printf("%s", result[0]);
+  printf("%s", result[1]);
+  printf("%s", result[2]);
+  printf("%s", result[3]);
   return 0;
-}
- */
+}*/
