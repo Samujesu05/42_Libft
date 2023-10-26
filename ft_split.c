@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sborrego <sborrego@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: sborrego <sborrego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:54:55 by sborrego          #+#    #+#             */
-/*   Updated: 2023/10/16 16:54:55 by sborrego         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:09:53 by sborrego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	**ft_split(char const *s, char c)
 			i++;
 			s = (char *)s + j - 2;
 		}
-		(char *)s++;
+		s++;
 	}
 	return (result);
 }
