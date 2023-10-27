@@ -36,7 +36,7 @@ char	*ft_itoa(int n)
 	char	result[12];
 	int		negcheck;
 	int		i;
-	int	temp;
+	int		temp;
 
 	i = 0;
 	negcheck = 0;
