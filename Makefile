@@ -6,7 +6,7 @@
 #    By: sborrego <sborrego@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/12 13:51:11 by sborrego          #+#    #+#              #
-#    Updated: 2023/10/26 19:16:21 by sborrego         ###   ########.fr        #
+#    Updated: 2023/10/28 21:04:30 by sborrego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRC = 		ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
 			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_putchar_fd.c\
 			ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strmapi.c ft_striteri.c\
 			ft_strrchr.c
-SRCBONUS =	ft_lstnew_bonus.c 
+SRCBONUS =	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c\
+			ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c\
+			ft_lstmap_bonus.c
 OBJECTS = $(SRC:.c=.o)
 OBJECTSBONUS = $(SRCBONUS:.c=.o)
 CLEAN = rm -Rf
