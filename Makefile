@@ -6,7 +6,7 @@
 #    By: sborrego <sborrego@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/12 13:51:11 by sborrego          #+#    #+#              #
-#    Updated: 2023/10/28 21:04:30 by sborrego         ###   ########.fr        #
+#    Updated: 2023/10/29 20:08:28 by sborrego         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,25 +29,21 @@ CLEAN = rm -Rf
 
 all: $(NAME)
 
-$(NAME): %.o
+$(NAME): $(OBJECTS)
+	ar rcs $(NAME) $(OBJECTS)
 
-	@ar rcs $(NAME) $(OBJECTS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^ -o $@
 
-%.o:
-	@$(CC) $(CFLAGS) -c $(SRC)
-	@$(CC) $(CFLAGS) -c $(SRCBONUS)
-bonus: %.o
-	@$(CC) $(CFLAGS) -c $(SRCBONUS)
-	@ar rcs $(NAME) $(OBJECTSBONUS)
+bonus: $(OBJECTSBONUS)
+	ar rcs $(NAME) $(OBJECTSBONUS)
 
 clean:
-	@$(CLEAN) $(OBJECTS)
-	@$(CLEAN) $(OBJECTSBONUS)
+	$(CLEAN) $(OBJECTS)
+	$(CLEAN) $(OBJECTSBONUS)
 
-fclean:
-	@$(CLEAN) $(OBJECTS)
-	@$(CLEAN) $(OBJECTSBONUS)
-	@$(CLEAN) $(NAME)
+fclean: clean
+	$(CLEAN) $(NAME)
 
 re: fclean all
 .PHONY: all clean fclean bonus re

@@ -6,11 +6,20 @@
 /*   By: sborrego <sborrego@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 19:14:41 by sborrego          #+#    #+#             */
-/*   Updated: 2023/10/26 20:04:30 by sborrego         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:37:41 by sborrego         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	static	ft_abs(int a)
+{
+	if (a <= 0)
+	{
+		a = a * -1;
+	}
+	return (a);
+}
 
 static char	*ft_reverse(char *a, int x)
 {
@@ -51,7 +60,7 @@ char	*ft_itoa(int n)
 	while (n != 0)
 	{
 		temp = n % 10;
-		result[i++] = abs(temp) + '0';
+		result[i++] = ft_abs(temp) + '0';
 		n = n / 10;
 	}
 	if (negcheck == 1)
